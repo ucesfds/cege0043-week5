@@ -1,0 +1,9 @@
+[submodule "ucesfds/www/js"]
+	path = ucesfds/www/js
+	url = https://github.com/ucesfds/cege0043-jsReference
+[submodule "ucesfds/www/css"]
+	path = ucesfds/www/css
+	url = https://github.com/ucesfds/cege0043-cssReference
+[submodule "ucesfds/www/images"]
+	path = ucesfds/www/images
+	url = https://github.com/ucesfds/cege0043-imagesReference
