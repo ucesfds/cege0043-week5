@@ -71,6 +71,7 @@
       z-index: 900;
     }
     </style>
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
   </head>
   <body>
     <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
@@ -137,6 +138,8 @@
             <div id="ucllogo" name="ucllogo">div goes here </div>
           </div>
         <div id="mapid" style="width: 600px; height: 400px;"></div>
+        <div id="ajaxtext" style="width: 600px; height: auto;">
+          <div w3-include-html="createForm.html"></div>
         </div>
       </main>
     </div>
@@ -147,6 +150,7 @@
     <script src="js/userTracking.js"></script>
     <script src="js/utilities.js"></script>
     <script src="js/startup.js"></script>
+    <script src="js/uploadData.js"> </script>
     <script>startup();</script>
   </body>
 </html>
