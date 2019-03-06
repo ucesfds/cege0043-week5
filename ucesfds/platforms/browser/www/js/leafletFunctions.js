@@ -57,5 +57,39 @@ function loadEarthquakelayer(earthquakedata) {
 	mymap.fitBounds(earthquakelayer.getBounds());
 }
 
-//addPointLinePoly();
-//getEarthquakes();
+// create a variable that will hold the XMLHttpRequest()
+var client_poi;
+// and a variable that will hold the london POI layer itself 
+var poilayer;
+// global variable to get hold of the POI data
+var poi;
+// create the code to get the POI data using an XMLHttpRequest
+function getPoi() {
+	var url = 'http://developer.cege.ucl.ac.uk:'+ httpPortNumber + "/getGeoJSON/london_poi/geom";
+	client_poi = new XMLHttpRequest();
+	client_poi.open('GET', url);
+	client_poi.onreadystatechange = poiResponse; 
+	client_poi.send();
+}
+// create the code to wait for the response from the data server, and process the response once it is received
+function poiResponse() {
+// this function listens out for the server to say that the data is ready - i.e. has state 4
+	if (client_poi.readyState === 4) {
+		if (client_poi.status == 200 && client_poi.status < 300){ // http status between 200 to 299 are all successful
+			// once the data is ready, process the data
+			var poidata = client_poi.responseText;
+			loadPoiLayer(poidata);
+		}
+
+	}
+}
+// convert the received data - which is text - to JSON format and add it to the map
+function loadPoiLayer(poidata) {
+	// convert the text to JSON
+	var poijson = JSON.parse(poidata);
+	poi = poijson;
+	// add the JSON layer onto the map - it will appear using the default icons
+	poilayer = L.geoJson(poijson).addTo(mymap);
+	// change the map zoom so that all the data is shown
+	mymap.fitBounds(poilayer.getBounds());
+}
