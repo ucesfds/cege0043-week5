@@ -2,14 +2,14 @@ function startup() {
 	document.addEventListener('DOMContentLoaded',
 	function() {
 		getPort();
-		trackAndPoly ();
+		trackAndPoly();
 	}, false);
 }
 
 function trackAndPoly() {
 	trackLocation();
 	addPointLinePoly();
-	getEarthquakes();
+	//getEarthquakes();
 	loadW3HTML();
 }
 
