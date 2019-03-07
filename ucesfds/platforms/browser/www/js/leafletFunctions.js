@@ -116,9 +116,10 @@ loadFormData(formData);
 // pop-up menu on a point if necessary
 // we can also use this to determine distance for the proximity alert
 var formLayer;
+var formJSON;
 function loadFormData(formData) {
 // convert the text received from the server to JSON
-var formJSON = JSON.parse(formData);
+formJSON = JSON.parse(formData);
 // load the geoJSON layer
 formLayer = L.geoJson(formJSON,
 {

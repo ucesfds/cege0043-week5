@@ -20,7 +20,8 @@ function getDistance() {
 	alert('getting distance');
 	// getDistanceFromPoint is the function called once the distance has been found
 	//navigator.geolocation.getCurrentPosition(getDistanceFromPoint);
-	navigator.geolocation.getCurrentPosition(getDistanceFromMultiplePoints);
+	//navigator.geolocation.getCurrentPosition(getDistanceFromMultiplePoints);
+	navigator.geolocation.getCurrentPosition(getDistanceFromForms);
 }
 function getDistanceFromPoint(position) {
 	// find the coordinates of a point using the website
@@ -45,6 +46,22 @@ function getDistanceFromPoint(position) {
 		if (distance < minDistance){
 			minDistance = distance;
 			closestQuake = obj.properties.place;
+		}
+}
+
+alert("Earthquake: " + closestQuake + " is distance " + minDistance + "away");
+ }
+
+  function getDistanceFromForms(position) {
+ 	var minDistance = 100000000000;
+	var closestForm = "";
+	for(var i = 0; i < formJSON.features.length; i++) {
+		var obj = formJSON.features[i];
+		var distance = calculateDistance(position.coords.latitude,
+		position.coords.longitude,obj.geometry.coordinates[0], obj.geometry.coordinates[1], 'K');
+		if (distance < minDistance){
+			minDistance = distance;
+			closestForm = obj.properties.place;
 		}
 }
 

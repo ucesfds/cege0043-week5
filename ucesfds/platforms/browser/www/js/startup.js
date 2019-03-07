@@ -10,7 +10,7 @@ function trackAndPoly() {
 	trackLocation();
 	addPointLinePoly();
 	//getEarthquakes();
-	loadW3HTML();
+	//loadW3HTML();
 }
 
 function loadW3HTML() {
