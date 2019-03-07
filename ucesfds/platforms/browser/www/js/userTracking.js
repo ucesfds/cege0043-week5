@@ -21,7 +21,7 @@ function getDistance() {
 	// getDistanceFromPoint is the function called once the distance has been found
 	//navigator.geolocation.getCurrentPosition(getDistanceFromPoint);
 	//navigator.geolocation.getCurrentPosition(getDistanceFromMultiplePoints);
-	navigator.geolocation.getCurrentPosition(getDistanceFromForms);
+	navigator.geolocation.getCurrentPosition(getDistanceFromPOI);
 }
 function getDistanceFromPoint(position) {
 	// find the coordinates of a point using the website
@@ -52,20 +52,20 @@ function getDistanceFromPoint(position) {
 alert("Earthquake: " + closestQuake + " is distance " + minDistance + "away");
  }
 
-  function getDistanceFromForms(position) {
+  function getDistanceFromPOI(position) {
  	var minDistance = 100000000000;
-	var closestForm = "";
-	for(var i = 0; i < formJSON.features.length; i++) {
-		var obj = formJSON.features[i];
+	var closestPOI = "";
+	for(var i = 0; i < poi.features.length; i++) {
+		var obj = poi.features[i];
 		var distance = calculateDistance(position.coords.latitude,
 		position.coords.longitude,obj.geometry.coordinates[0], obj.geometry.coordinates[1], 'K');
 		if (distance < minDistance){
 			minDistance = distance;
-			closestForm = obj.properties.place;
+			closestPOI = obj.properties.place;
 		}
 }
 
-alert("Earthquake: " + closestQuake + " is distance " + minDistance + "away");
+alert("POI: " + closestPOI + " is distance " + minDistance + "away");
  }
 
 // code adapted from https://www.htmlgoodies.com/beyond/javascript/calculate-the-distance-between-two-points-inyour-web-apps.html
