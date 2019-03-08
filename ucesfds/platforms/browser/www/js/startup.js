@@ -7,9 +7,10 @@ function startup() {
 }
 
 function trackAndPoly() {
+	
 	trackLocation();
-	addPointLinePoly();
-	getPoi();
+	//getPoi();
+	//addPointLinePoly();
 	//getEarthquakes();
 	//loadW3HTML();
 }
